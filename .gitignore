@@ -1,0 +1,15 @@
+/bin/
+.settings/
+.classpath
+.project
+.factorypath
+.apt_generated/
+.springBeans
+/target/
+commonapi/.settings/
+commonapi/.classpath
+commonapi/.project
+timesheetservice/.settings/
+timesheetservice/.classpath
+timesheetservice/.project
+timesheetservice/.springBeans

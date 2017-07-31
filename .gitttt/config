@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	logallrefupdates = true
+[remote "origin"]
+	url = http://128.199.223.27/techmango/hrms-portal.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "bugfix/billingProfileFields"]
+	remote = origin
+	merge = refs/heads/bugfix/billingProfileFields

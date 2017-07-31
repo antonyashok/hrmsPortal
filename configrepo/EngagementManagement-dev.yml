@@ -1,0 +1,45 @@
+eureka:
+  client:
+    enabled: true
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://admin:admin@192.168.3.35:8761/eureka/
+  instance:
+    prefer-ip-address: true
+server:
+  context-path: /engagements
+  port: 8083
+spring:
+  data:
+    mongodb:
+      repositories:
+        enabled: true
+      uri: mongodb://tsuser:tsuser@192.168.3.35:27017/timetrack?
+  datasource:
+    name: engagement
+    password: tsuser
+    url: jdbc:mysql://192.168.3.35:3307/engagement?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+    username: tsuser
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: true
+  jackson:
+    serialization:
+      indent_output: true
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        cache:
+          use_query_cache: false
+          use_second_level_cache: false
+        generate_statistics: true
+    show-sql: true
+  profiles:
+    active: dev

@@ -1,0 +1,41 @@
+eureka:
+  instance:
+    appname: portalmanagement
+    instanceId: portalmanagement:${spring.application.instance_id:${random.value}}
+    statusPageUrlPath: ${server.context-path}${management.context-path}/info
+    healthCheckUrlPath: ${server.context-path}${management.context-path}/health
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 5
+    registryFetchIntervalSeconds: 1
+  client:
+    healthcheck:
+      enabled: true
+management:
+  context-path: /system
+  health:
+    mail:
+      enabled: false
+spring:
+  jackson:
+    serialization.write_dates_as_timestamps: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
+  messages:
+    basename: i18n/messages
+  mvc:
+    favicon:
+      enabled: false
+  thymeleaf:
+    mode: XHTML
+security:
+  basic:
+    enabled: false
+server:
+  context-path: /portal
+  session:
+    cookie:
+      http-only: true

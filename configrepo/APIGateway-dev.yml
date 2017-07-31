@@ -1,0 +1,135 @@
+spring:
+  mvc:
+    favicon:
+      enabled: false
+server:
+  port: 8080
+  use-forward-headers: true
+
+cors:
+  allow-credentials: true
+  allowed-headers:
+    - "*"
+  allowed-methods:
+    - "*"
+  allowed-origins:
+    - "http://192.168.35"
+    - "http://192.168.35:8080"
+    - "http://192.168.253:9199"
+
+management:
+  security:
+    enabled: false
+
+endpoints:
+  health:
+    sensitive: false
+
+eureka:
+    client:
+        enabled: true
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://admin:admin@192.168.3.35:8761/eureka
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+openid-connect:
+  whitelist:
+    - "http://192.168.3.122:8080/auth/realms/atlis"
+    - "http://192.168.3.35:8080/auth/realms/atlis"
+
+security:
+  sessions: NEVER
+  basic:
+    enabled: false
+  ignored:
+    - "/assets/**" # see http://stackoverflow.com/a/35640540/252344
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 80000
+
+ribbon:
+    ReadTimeout: 70000
+    ConnectTimeout: 70000
+    eureka:
+        enabled: true
+
+zuul:
+  addHostHeader: true
+  addProxyHeaders: true
+  ignoredPatterns: /system/**
+  host:
+    max-total-connections: 30000
+    max-per-route-connections: 3000
+  semaphore:
+    max-semaphores: 15000
+  routes:
+    roles:
+      path: /management/roles/**
+      strip-prefix: false
+      service-id: AUTHORIZATIONMANAGEMENT
+      sensitive-headers:
+    user-info:
+      path: /openid/userinfo/**
+      strip-prefix: false
+      service-id: AUTHORIZATIONMANAGEMENT
+      sensitive-headers:
+    auth:
+      path: /auth/realms/atlis/**
+      strip-prefix: false
+      url: http://192.168.3.122:8080
+      sensitive-headers:
+    auth-ui:
+      path: /auth/resources/**
+      strip-prefix: false
+      url: http://192.168.3.122:8080
+      sensitive-headers:
+    commonservicemanagement:
+      path: /common/**
+      strip-prefix: false
+      service-id: COMMONSERVICEMANAGEMENT
+      sensitive-headers:
+    timesheetmanagement:
+      path: /timetrack/**
+      strip-prefix: false
+      service-id: TIMESHEETMANAGEMENT
+      sensitive-headers:
+    engagement:
+      path: /engagements/**
+      strip-prefix: false
+      service-id: ENGAGEMENTMANAGEMENT
+      sensitive-headers: 
+    portalmanagement: 
+      path: /portal/**
+      strip-prefix: false
+      service-id: PORTALMANAGEMENT
+      sensitive-headers:
+    timetrack:
+      path: /timetrackui/**
+      strip-prefix: false
+      service-id: TIMETRACK
+      sensitive-headers:
+proxy:
+  auth:
+    routes:
+      roles: oauth2
+      user-info: oauth2
+      auth-ui: none
+      auth: passthru
+      timetrack: none
+      commonservicemanagement: oauth2
+      timesheetmanagement: oauth2
+      portalmanagement: oauth2  
+      engagement: oauth2

@@ -1,0 +1,65 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration will be overriden by the Spring profile you use,
+# for example application-dev.yml if you use the "dev" profile.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+eureka:
+  instance:
+    appname: portalmanagement
+    instanceId: portalmanagement:${spring.application.instance_id:${random.value}}
+    statusPageUrlPath: ${server.context-path}${management.context-path}/info
+    healthCheckUrlPath: ${server.context-path}${management.context-path}/health
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 5
+    registryFetchIntervalSeconds: 1
+    client:
+      healthcheck:
+        enabled: true
+management:
+  context-path: /system
+  health:
+    mail:
+      enabled: false
+spring:
+  application:
+    name: PortalManagement
+  jackson:
+    serialization.write_dates_as_timestamps: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
+  messages:
+    basename: i18n/messages
+  mvc:
+    favicon:
+      enabled: false
+  thymeleaf:
+    mode: XHTML
+security:
+  basic:
+    enabled: false
+server:
+  context-path: /portal
+  session:
+    cookie:
+      http-only: true
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    com.tm.portal: ERROR
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: ${java.io.tmpdir}/portalservice-management.log

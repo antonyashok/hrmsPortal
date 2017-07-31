@@ -1,0 +1,52 @@
+eureka:
+  instance:
+    metadataMap:
+      menus:
+      - authorities: urn:igi:comtrack-management:comtrack-configuration:grant:any
+        name: INNOTHINK
+        relativeUri: /tm/innothink
+      - name: STAFFING
+        submenus:
+          '0':
+            authorities: urn:igi:restrak:candidate:view
+            name: FIND CANDIDATES
+            relativeUri: /app/staffing/search
+          '1':
+            authorities: urn:igi:restrak:candidate:view
+            name: HOTBOOK
+            relativeUri: /app/staffing/myhotbook
+      host: http://app.techmango.net
+    prefer-ip-address: true
+  client:
+    enabled: true
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://admin:admin@192.168.3.73:8761/eureka/
+spring:
+  security:
+    localAddressExpressions:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+    - 127.0.0.1/32
+elasticsearch:
+  client: false
+  cluster-name: atlis-dev
+  enable-multicast: false
+  hosts: 192.168.3.35:9300
+  local: false
+  path: /var/atlis/elasticsearch
+  port: 9300
+portal:
+  application:
+    token:
+      issuer: http://192.168.3.122:8080/auth/realms/atlis
+      keysource:
+        url: http://192.168.3.122:8080/auth/realms/atlis/protocol/openid-connect/certs
+    userinfo:
+      endpoint: http://192.168.3.132/userinfo
+server:
+  port: 8085

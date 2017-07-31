@@ -1,0 +1,5 @@
+use invoice;
+
+ALTER TABLE invoice.global_invoice_setup ADD COLUMN bill_specialist_id BIGINT(15);
+
+

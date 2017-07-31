@@ -1,0 +1,119 @@
+application:
+  cronjob:
+    contractornegativetimesheet: 0 0/10 0 * * ?
+    contractortimesheet: 0 30 23 * * ?
+    emailjob: 0 0/5 * * * ?
+    employeetimesheet: 0 10 0 * * ?
+    invoicealertsjob: 0 40 0 * * ?
+    invoiceexceptionprocess: 0 0 0 * * ?
+    invoiceprocess: 0 55 23 * * ?
+    recruitertimesheet: 0 20 0 * * ?
+elasticsearch:
+  client: false
+  cluster-name: atlis-dev
+  hosts: 192.168.6.35:9300
+  local: false
+  port: 9300
+eureka:
+  client:
+    enabled: true
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://admin:admin@192.168.6.15:8761/eureka/
+  instance:
+    prefer-ip-address: true
+liquibase:
+  contexts: dev
+server:
+  contextPath: /timesheetcron
+  port: 8072
+spring:
+  application:
+    expense-receipts: /home/smi-user/test/
+    jasper-report: /home/smi-user/test/
+  data:
+    mongodb:
+      uri: mongodb://tsuser:tsuser@192.168.6.35:27018/timetrack?
+    repositories:
+      enabled: true
+  datasource:
+    common-db:
+      jdbcUrl: jdbc:mysql://192.168.6.35:3308/common?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+      max-life-time: 20000
+      maximum-pool-size: 100
+      minimum-idle: 2
+      name: common
+      password: tsuser
+      username: tsuser
+    ems-db:
+      jdbcUrl: jdbc:mysql://192.168.6.35:3308/atlis_ems?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+      max-life-time: 20000
+      maximum-pool-size: 100
+      minimum-idle: 2
+      name: atlis_ems
+      password: tsuser
+      username: tsuser
+    invoice-db:
+      jdbcUrl: jdbc:mysql://192.168.6.35:3308/invoice?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+      max-life-time: 20000
+      maximum-pool-size: 100
+      minimum-idle: 2
+      name: invoice
+      password: tsuser
+      username: tsuser
+    engagement-db:
+      jdbcUrl: jdbc:mysql://192.168.6.35:3308/engagement?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+      max-life-time: 20000
+      maximum-pool-size: 100
+      minimum-idle: 2
+      name: engagement
+      password: tsuser
+      username: tsuser      
+    timetrack-db:
+      jdbcUrl: jdbc:mysql://192.168.6.35:3308/timetrack?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+      max-life-time: 20000
+      maximum-pool-size: 100
+      minimum-idle: 2
+      name: timetrack
+      password: tsuser
+      username: tsuser
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: true
+  jackson:
+    serialization:
+      indent_output: true
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        cache:
+          use_query_cache: false
+          use_second_level_cache: false
+        generate_statistics: true
+    show-sql: false
+  mail:
+    host: localhost
+    password: ''
+    port: 25
+    username: ''
+  messages:
+    cache-seconds: 1
+  profiles:
+    active: dev-timetrackservice
+  thymeleaf:
+    cache: false
+timetrack:
+  application:
+    token:
+      issuer: http://192.168.6.122:8080/auth/realms/timesheet
+      keysource:
+        url: http://192.168.6.122:8080/auth/realms/timesheet/protocol/openid-connect/certs
+    userinfo:
+      endpoint: http://192.168.6.35/userinfo/

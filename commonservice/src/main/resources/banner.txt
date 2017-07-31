@@ -1,0 +1,17 @@
+
+${AnsiColor.BRIGHT_BLUE}	
+${AnsiColor.BRIGHT_BLUE}$$$$$$$$\                  $$\                                                             
+${AnsiColor.BRIGHT_BLUE}\__$$  __|                 $$ |                                                            
+${AnsiColor.BRIGHT_BLUE}   $$ | $$$$$$\   $$$$$$$\ $$$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$$$$$$\   $$$$$$\   $$$$$$\  
+${AnsiColor.BRIGHT_BLUE}   $$ |$$  __$$\ $$  _____|$$  __$$\ $$  _$$  _$$\  \____$$\ $$  __$$\ $$  __$$\ $$  __$$\ 
+${AnsiColor.BRIGHT_BLUE}   $$ |$$$$$$$$ |$$ /      $$ |  $$ |$$ / $$ / $$ | $$$$$$$ |$$ |  $$ |$$ /  $$ |$$ /  $$ |
+${AnsiColor.BRIGHT_BLUE}   $$ |$$   ____|$$ |      $$ |  $$ |$$ | $$ | $$ |$$  __$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
+${AnsiColor.BRIGHT_BLUE}   $$ |\$$$$$$$\ \$$$$$$$\ $$ |  $$ |$$ | $$ | $$ |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |
+${AnsiColor.BRIGHT_BLUE}   \__| \_______| \_______|\__|  \__|\__| \__| \__| \_______|\__|  \__| \____$$ | \______/ 
+${AnsiColor.BRIGHT_BLUE}                                                                       $$\   $$ |          
+${AnsiColor.BRIGHT_BLUE}                                                                       \$$$$$$  |          
+${AnsiColor.BRIGHT_BLUE}                                                                        \______/           
+
+
+${AnsiColor.GREEN}:: Techmango - CommonServiceManagement 🤓  :: Running Spring Boot ${spring-boot.version} :: 
+:: http://techmango.github.io ::${AnsiColor.DEFAULT}
